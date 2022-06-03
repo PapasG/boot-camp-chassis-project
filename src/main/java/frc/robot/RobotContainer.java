@@ -10,15 +10,11 @@ public class RobotContainer {
 
   private final XboxController m_controller;
   private final DriveTrain m_driveTrain;
-
-  private final JoystickButton m_AButton;
   
   public RobotContainer() {
 
     m_driveTrain = new DriveTrain();
     m_controller = new XboxController(0);
-
-    m_AButton = new JoystickButton(m_controller, XboxController.Button.kA.value);
 
     configureButtonBindings();
     setDefaultCommands();
