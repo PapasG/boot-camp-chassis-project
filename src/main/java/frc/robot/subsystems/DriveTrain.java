@@ -20,10 +20,10 @@ public class DriveTrain extends SubsystemBase{
 
     public DriveTrain(){
 
-        Spark rightFrontDriveMotor = new Spark(0);
-        Spark rightBackDriveMotor = new Spark(1);
-        Spark leftBackDriveMotor = new Spark(2);
-        Spark leftFrontDriveMotor = new Spark(3);
+        Spark rightFrontDriveMotor = new Spark(Constants.DriveInfo.RIGHT_FRONT_DRIVE_MOTOR_ID);
+        Spark rightBackDriveMotor = new Spark(Constants.DriveInfo.RIGHT_BACK_DRIVE_MOTOR_ID);
+        Spark leftBackDriveMotor = new Spark(Constants.DriveInfo.LEFT_BACK_DRIVE_MOTOR_ID);
+        Spark leftFrontDriveMotor = new Spark(Constants.DriveInfo.LEFT_FRONT_DRIVE_MOTOR_ID);
 
         m_leftMotorControllerGroup = new MotorControllerGroup(leftBackDriveMotor, leftFrontDriveMotor);
         m_rightMotorControllerGroup = new MotorControllerGroup(rightBackDriveMotor, rightFrontDriveMotor);
@@ -35,7 +35,7 @@ public class DriveTrain extends SubsystemBase{
 
         m_differentialDrive.setSafetyEnabled(false);
 
-        m_modeIndicator = 0;
+        m_modeIndicator = Constants.DriveInfo.MODE_INDICATOR_INITIAL_VALUE;
 
     }
 
@@ -45,8 +45,96 @@ public class DriveTrain extends SubsystemBase{
 
     }
 
-    public void lebronJamesDrive(double driveSpeed, double robotRotation, double spin,
-                                 double leftSpeed, double rightSpeed, double squareInputs){
+
+    public void arcadeDrive(double speed, double rotation, boolean squareInputs){
+
+        m_differentialDrive.arcadeDrive(speed, rotation, squareInputs);
+
+    }
+
+
+    public void lebronJamesDrive(double driveSpeed, double robotRotation, double spin){
+
+        if(robotRotation > 0.04 && (driveSpeed> 0.01 || driveSpeed < -0.01)){
+            
+            m_differentialDrive.tankDrive(driveSpeed, driveSpeed - Math.abs(robotRotation));
+
+        } else if(robotRotation < -0.04 && (driveSpeed> 0.01 || driveSpeed < -0.01)){
+            
+            m_differentialDrive.tankDrive(driveSpeed - Math.abs(robotRotation), driveSpeed);
+
+        } else if(driveSpeed> 0.01 || driveSpeed < -0.01){
+
+            m_differentialDrive.tankDrive(driveSpeed, driveSpeed);
+
+        } else if(spin < -0.04){
+
+            m_differentialDrive.tankDrive(spin, -spin);
+
+        } else if(spin > 0.04){
+
+            m_differentialDrive.tankDrive(spin, -spin);
+
+        }
+
+    }
+
+
+    public void modeDrive(double driveSpeed, double robotRotation, double spin,
+                          double leftSpeed, double rightSpeed, boolean squareInputs){
+
+
+        if (m_modeIndicator == Constants.DriveInfo.TANK_DRIVE_MODE_VALUE){
+
+            m_differentialDrive.tankDrive(leftSpeed, rightSpeed, squareInputs);
+
+        }
+
+
+        if (m_modeIndicator == Constants.DriveInfo.LEBRON_JAMES_DRIVE_MODE_VALUE){
+
+
+            if(robotRotation > 0.04 && (driveSpeed> 0.01 || driveSpeed < -0.01)){
+            
+                m_differentialDrive.tankDrive(driveSpeed, driveSpeed - Math.abs(robotRotation));
+    
+            } else if(robotRotation < -0.04 && (driveSpeed> 0.01 || driveSpeed < -0.01)){
+                
+                m_differentialDrive.tankDrive(driveSpeed - Math.abs(robotRotation), driveSpeed);
+    
+            } else if(driveSpeed> 0.01 || driveSpeed < -0.01){
+    
+                m_differentialDrive.tankDrive(driveSpeed, driveSpeed);
+    
+            } else if(spin < -0.04){
+    
+                m_differentialDrive.tankDrive(spin, -spin);
+    
+            } else if(spin > 0.04){
+    
+                m_differentialDrive.tankDrive(spin, -spin);
+    
+            }
+
+
+        }
+
+
+    }
+
+
+    public void changeDriveMode(){
+
+        if (m_modeIndicator == Constants.DriveInfo.TANK_DRIVE_MODE_VALUE){
+
+            m_modeIndicator = Constants.DriveInfo.LEBRON_JAMES_DRIVE_MODE_VALUE;
+
+        } else if (m_modeIndicator == Constants.DriveInfo.LEBRON_JAMES_DRIVE_MODE_VALUE){
+
+            m_modeIndicator = Constants.DriveInfo.TANK_DRIVE_MODE_VALUE;
+            
+        }
+
 
     }
 

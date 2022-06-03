@@ -8,8 +8,16 @@ public final class Constants {
 
         public final static int MODE_INDICATOR_INITIAL_VALUE = 0;
 
+        public final static int TANK_DRIVE_MODE_VALUE = 0;
+        public final static int LEBRON_JAMES_DRIVE_MODE_VALUE = 1;
+
         public final static boolean LEFT_MOTOR_CONTROLLER_GROUP_IS_INVERTED = true;
         public final static boolean RIGHT_MOTOR_CONTROLLER_GROUP_IS_INVERTED = false;
+
+        public final static int RIGHT_FRONT_DRIVE_MOTOR_ID = 0;
+        public final static int RIGHT_BACK_DRIVE_MOTOR_ID = 1;
+        public final static int LEFT_BACK_DRIVE_MOTOR_ID = 2;
+        public final static int LEFT_FRONT_DRIVE_MOTOR_ID = 3;
 
     }
 
