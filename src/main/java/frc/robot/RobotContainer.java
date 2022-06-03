@@ -6,6 +6,8 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.DriveTrain;
 
+import frc.robot.Constants;
+
 public class RobotContainer {
 
   private final XboxController m_controller;
@@ -16,7 +18,7 @@ public class RobotContainer {
   public RobotContainer() {
 
     m_driveTrain = new DriveTrain();
-    m_controller = new XboxController(0);
+    m_controller = new XboxController(Constants.RobotInfo.CONTROLLER_PORT);
 
     m_driveModeButton = new JoystickButton(m_controller, XboxController.Button.kA.value);
 

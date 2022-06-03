@@ -23,4 +23,9 @@ public final class Constants {
 
     }
 
+    public final static class RobotInfo{
+
+        public final static int CONTROLLER_PORT = 1;
+    }
+
 }
