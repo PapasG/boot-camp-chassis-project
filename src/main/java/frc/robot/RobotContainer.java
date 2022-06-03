@@ -10,11 +10,15 @@ public class RobotContainer {
 
   private final XboxController m_controller;
   private final DriveTrain m_driveTrain;
+
+  private final JoystickButton m_driveModeButton;
   
   public RobotContainer() {
 
     m_driveTrain = new DriveTrain();
     m_controller = new XboxController(0);
+
+    m_driveModeButton = new JoystickButton(m_controller, XboxController.Button.kA.value);
 
     configureButtonBindings();
     setDefaultCommands();
@@ -22,7 +26,7 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
 
-    
+    m_driveModeButton.whenPressed(new RunCommand(()-> m_driveTrain.changeDriveMode(), m_driveTrain));
 
   }
 
