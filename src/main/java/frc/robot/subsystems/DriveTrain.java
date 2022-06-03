@@ -33,7 +33,7 @@ public class DriveTrain extends SubsystemBase{
         m_leftMotorControllerGroup.setInverted(Constants.DriveInfo.LEFT_MOTOR_CONTROLLER_GROUP_IS_INVERTED);
         m_rightMotorControllerGroup.setInverted(Constants.DriveInfo.RIGHT_MOTOR_CONTROLLER_GROUP_IS_INVERTED);
 
-        m_differentialDrive.setSafetyEnabled(false);
+        m_differentialDrive.setSafetyEnabled(Constants.DriveInfo.MOTOR_SAFETY_IS_ENABLED);
 
         m_modeIndicator = Constants.DriveInfo.MODE_INDICATOR_INITIAL_VALUE;
 
@@ -134,7 +134,6 @@ public class DriveTrain extends SubsystemBase{
             m_modeIndicator = Constants.DriveInfo.TANK_DRIVE_MODE_VALUE;
             
         }
-
 
     }
 

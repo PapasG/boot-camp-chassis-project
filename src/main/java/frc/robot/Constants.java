@@ -19,6 +19,8 @@ public final class Constants {
         public final static int LEFT_BACK_DRIVE_MOTOR_ID = 2;
         public final static int LEFT_FRONT_DRIVE_MOTOR_ID = 3;
 
+        public final static boolean MOTOR_SAFETY_IS_ENABLED = false;
+
     }
 
 }
