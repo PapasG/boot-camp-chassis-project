@@ -40,16 +40,16 @@ public class DriveTrain extends SubsystemBase{
 
     }
 
-    public void tankDrive(double leftSpeed, double rightSpeed, boolean squareInputs){
+    public void tankDrive(double leftSpeed, double rightSpeed){
 
-        m_differentialDrive.tankDrive(leftSpeed, rightSpeed, squareInputs);
+        m_differentialDrive.tankDrive(leftSpeed, rightSpeed, Constants.DriveInfo.SQUARE_INPUTS);
 
     }
 
 
-    public void arcadeDrive(double speed, double rotation, boolean squareInputs){
+    public void arcadeDrive(double speed, double rotation){
 
-        m_differentialDrive.arcadeDrive(speed, rotation, squareInputs);
+        m_differentialDrive.arcadeDrive(speed, rotation, Constants.DriveInfo.SQUARE_INPUTS);
 
     }
 
@@ -58,23 +58,23 @@ public class DriveTrain extends SubsystemBase{
 
         if(robotRotation > 0.04 && (driveSpeed> 0.01 || driveSpeed < -0.01)){
             
-            m_differentialDrive.tankDrive(driveSpeed, driveSpeed - Math.abs(robotRotation));
+            m_differentialDrive.tankDrive(driveSpeed, driveSpeed - Math.abs(robotRotation), Constants.DriveInfo.SQUARE_INPUTS);
 
         } else if(robotRotation < -0.04 && (driveSpeed> 0.01 || driveSpeed < -0.01)){
             
-            m_differentialDrive.tankDrive(driveSpeed - Math.abs(robotRotation), driveSpeed);
+            m_differentialDrive.tankDrive(driveSpeed - Math.abs(robotRotation), driveSpeed, Constants.DriveInfo.SQUARE_INPUTS);
 
         } else if(driveSpeed> 0.01 || driveSpeed < -0.01){
 
-            m_differentialDrive.tankDrive(driveSpeed, driveSpeed);
+            m_differentialDrive.tankDrive(driveSpeed, driveSpeed, Constants.DriveInfo.SQUARE_INPUTS);
 
         } else if(spin < -0.04){
 
-            m_differentialDrive.tankDrive(spin, -spin);
+            m_differentialDrive.tankDrive(spin, -spin, Constants.DriveInfo.SQUARE_INPUTS);
 
         } else if(spin > 0.04){
 
-            m_differentialDrive.tankDrive(spin, -spin);
+            m_differentialDrive.tankDrive(spin, -spin, Constants.DriveInfo.SQUARE_INPUTS);
 
         }
 
@@ -82,11 +82,11 @@ public class DriveTrain extends SubsystemBase{
 
 
     public void modeDrive(double driveSpeed, double robotRotation, double spin,
-                          double leftSpeed, double rightSpeed, boolean squareInputs){
+                          double leftSpeed, double rightSpeed){
 
         if (m_modeIndicator == Constants.DriveInfo.TANK_DRIVE_MODE_VALUE){
 
-            this.tankDrive(leftSpeed, rightSpeed, squareInputs);
+            this.tankDrive(leftSpeed, rightSpeed);
 
             SmartDashboard.putString("Drive Mode", "Tank Drive");
 

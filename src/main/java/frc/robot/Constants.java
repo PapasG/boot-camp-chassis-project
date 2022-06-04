@@ -21,6 +21,8 @@ public final class Constants {
 
         public final static boolean MOTOR_SAFETY_IS_ENABLED = false;
 
+        public final static boolean SQUARE_INPUTS = false;
+
     }
 
     public final static class RobotInfo{

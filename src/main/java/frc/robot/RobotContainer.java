@@ -6,8 +6,6 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.DriveTrain;
 
-import frc.robot.Constants;
-
 public class RobotContainer {
 
   private final XboxController m_controller;
@@ -37,8 +35,7 @@ public class RobotContainer {
     m_driveTrain.setDefaultCommand(new RunCommand(()->
                                        m_driveTrain.modeDrive(m_controller.getRightTriggerAxis() - m_controller.getLeftTriggerAxis(), 
                                        m_controller.getLeftX(), m_controller.getRightX(), 
-                                       m_controller.getLeftY(), m_controller.getRightY(), 
-                                       false), m_driveTrain));
+                                       m_controller.getLeftY(), m_controller.getRightY()), m_driveTrain));
 
   }
 
