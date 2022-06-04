@@ -34,9 +34,11 @@ public class RobotContainer {
 
   private void setDefaultCommands(){
 
-    m_driveTrain.setDefaultCommand(new RunCommand(() -> m_driveTrain.tankDrive(m_controller.getLeftY(),
-                                                                              m_controller.getRightY(),
-                                                                              false), m_driveTrain));
+    m_driveTrain.setDefaultCommand(new RunCommand(()->
+                                       m_driveTrain.modeDrive(m_controller.getRightTriggerAxis() - m_controller.getLeftTriggerAxis(), 
+                                       m_controller.getLeftX(), m_controller.getRightX(), 
+                                       m_controller.getLeftY(), m_controller.getRightY(), 
+                                       false), m_driveTrain));
 
   }
 
