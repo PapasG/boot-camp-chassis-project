@@ -23,6 +23,9 @@ public final class Constants {
 
         public final static boolean SQUARE_INPUTS = false;
 
+        public final static double TRIGGER_DEAD_ZONE_VALUE = 0.01;
+        public final static double JOYSTICK_DEAD_ZONE_VALUE = 0.04;
+
     }
 
     public final static class RobotInfo{

@@ -56,27 +56,23 @@ public class DriveTrain extends SubsystemBase{
 
     public void lebronJamesDrive(double driveSpeed, double robotRotation, double spin){
 
-        if(robotRotation > 0.04 && (driveSpeed> 0.01 || driveSpeed < -0.01)){
+        if(robotRotation > Constants.DriveInfo.JOYSTICK_DEAD_ZONE_VALUE && (driveSpeed > Constants.DriveInfo.TRIGGER_DEAD_ZONE_VALUE || driveSpeed < -Constants.DriveInfo.TRIGGER_DEAD_ZONE_VALUE)){
             
             m_differentialDrive.tankDrive(driveSpeed, driveSpeed - Math.abs(robotRotation), Constants.DriveInfo.SQUARE_INPUTS);
 
-        } else if(robotRotation < -0.04 && (driveSpeed> 0.01 || driveSpeed < -0.01)){
+        } else if(robotRotation < -Constants.DriveInfo.JOYSTICK_DEAD_ZONE_VALUE && (driveSpeed > Constants.DriveInfo.TRIGGER_DEAD_ZONE_VALUE || driveSpeed < -Constants.DriveInfo.TRIGGER_DEAD_ZONE_VALUE)){
             
             m_differentialDrive.tankDrive(driveSpeed - Math.abs(robotRotation), driveSpeed, Constants.DriveInfo.SQUARE_INPUTS);
 
-        } else if(driveSpeed> 0.01 || driveSpeed < -0.01){
+        } else if(driveSpeed > Constants.DriveInfo.TRIGGER_DEAD_ZONE_VALUE || driveSpeed < -Constants.DriveInfo.TRIGGER_DEAD_ZONE_VALUE){
 
             m_differentialDrive.tankDrive(driveSpeed, driveSpeed, Constants.DriveInfo.SQUARE_INPUTS);
 
-        } else if(spin < -0.04){
+        } else if(spin < -Constants.DriveInfo.JOYSTICK_DEAD_ZONE_VALUE || spin > Constants.DriveInfo.JOYSTICK_DEAD_ZONE_VALUE){
 
             m_differentialDrive.tankDrive(spin, -spin, Constants.DriveInfo.SQUARE_INPUTS);
 
-        } else if(spin > 0.04){
-
-            m_differentialDrive.tankDrive(spin, -spin, Constants.DriveInfo.SQUARE_INPUTS);
-
-        }
+        } 
 
     }
 
