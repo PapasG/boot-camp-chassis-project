@@ -11,6 +11,8 @@ public final class Constants {
         public final static int TANK_DRIVE_MODE_VALUE = 0;
         public final static int LEBRON_JAMES_DRIVE_MODE_VALUE = 1;
 
+        public final static double MODE_CHANGE_TIME_VALUE = .15;
+
         public final static boolean LEFT_MOTOR_CONTROLLER_GROUP_IS_INVERTED = true;
         public final static boolean RIGHT_MOTOR_CONTROLLER_GROUP_IS_INVERTED = false;
 

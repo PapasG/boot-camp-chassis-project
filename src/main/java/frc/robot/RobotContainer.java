@@ -27,7 +27,7 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
 
-    m_driveModeButton.whenPressed(new RunCommand(()-> m_driveTrain.changeDriveMode(), m_driveTrain));
+    m_driveModeButton.whenPressed(new RunCommand(()-> m_driveTrain.changeDriveMode(), m_driveTrain).withTimeout(Constants.DriveInfo.MODE_CHANGE_TIME_VALUE));
 
   }
 
