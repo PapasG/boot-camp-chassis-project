@@ -56,6 +56,8 @@ public class DriveTrain extends SubsystemBase{
 
     public void lebronJamesDrive(double driveSpeed, double robotRotation, double spin){
 
+        driveSpeed = -driveSpeed;
+
         if(robotRotation > Constants.DriveInfo.JOYSTICK_DEAD_ZONE_VALUE && (driveSpeed > Constants.DriveInfo.TRIGGER_DEAD_ZONE_VALUE || driveSpeed < -Constants.DriveInfo.TRIGGER_DEAD_ZONE_VALUE)){
             
             m_differentialDrive.tankDrive(driveSpeed, driveSpeed - Math.abs(robotRotation), Constants.DriveInfo.SQUARE_INPUTS);
