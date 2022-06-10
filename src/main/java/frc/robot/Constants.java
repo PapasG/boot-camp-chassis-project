@@ -30,6 +30,13 @@ public final class Constants {
 
     }
 
+    public final static class MechanismInfo{
+
+        public final static int SOLENOID_FORWARD_CHANNEL_PORT_VAL = 0;
+        public final static int SOLENOID_REVERSE_CHANNEL_PORT_VAL = 1;
+        
+    }
+
     public final static class RobotInfo{
 
         public final static int CONTROLLER_PORT = 1;
