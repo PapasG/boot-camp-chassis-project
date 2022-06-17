@@ -1,6 +1,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.XboxController;
 
 public final class Constants {
 
@@ -40,6 +41,10 @@ public final class Constants {
     public final static class RobotInfo{
 
         public final static int CONTROLLER_PORT = 1;
+
+        public final static int DRIVE_MODE_BUTTON_VALUE = XboxController.Button.kA.value;
+        public final static int MECHANISM_BUTTON_VALUE = XboxController.Button.kB.value;
+         
     }
 
 }
