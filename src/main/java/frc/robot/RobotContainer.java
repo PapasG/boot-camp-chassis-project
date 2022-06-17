@@ -1,6 +1,8 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.simulation.JoystickSim;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.RunCommand;
@@ -21,6 +23,8 @@ public class RobotContainer {
 
   private final JoystickButton m_driveModeButton;
   private final JoystickButton m_mechanismButton;
+  private final JoystickButton m_extendButton;
+  private final JoystickButton m_retractButton;
   
   public RobotContainer() {
 
@@ -30,6 +34,8 @@ public class RobotContainer {
 
     m_driveModeButton = new JoystickButton(m_controller, Constants.RobotInfo.DRIVE_MODE_BUTTON_VALUE);
     m_mechanismButton = new JoystickButton(m_controller, Constants.RobotInfo.MECHANISM_BUTTON_VALUE);
+    m_extendButton = new JoystickButton(m_controller, Constants.RobotInfo.EXTEND_MECHANISM_BUTTON_VALUE);
+    m_retractButton = new JoystickButton(m_controller, Constants.RobotInfo.MECHANISM_BUTTON_VALUE);
 
     m_extendPiston = new ExtendPiston(m_mechanism.getDoubleSolenoid());
     m_retractPiston = new RetractPiston(m_mechanism.getDoubleSolenoid());
@@ -45,6 +51,9 @@ public class RobotContainer {
 
     m_mechanismButton.whileHeld(m_extendPiston);
     m_mechanismButton.whenReleased(m_retractPiston);
+
+    m_extendButton.whenPressed(m_extendPiston);
+    m_retractButton.whenPressed(m_retractPiston);
 
   }
 

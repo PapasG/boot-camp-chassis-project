@@ -44,6 +44,8 @@ public final class Constants {
 
         public final static int DRIVE_MODE_BUTTON_VALUE = XboxController.Button.kA.value;
         public final static int MECHANISM_BUTTON_VALUE = XboxController.Button.kB.value;
+        public final static int EXTEND_MECHANISM_BUTTON_VALUE = XboxController.Button.kX.value;
+        public final static int RETRACT_MECHANISM_BUTTON_VALUE = XboxController.Button.kY.value;
          
     }
 
