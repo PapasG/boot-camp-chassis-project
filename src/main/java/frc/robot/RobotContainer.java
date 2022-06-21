@@ -52,8 +52,8 @@ public class RobotContainer {
     m_mechanismButton.whileHeld(m_extendPiston);
     m_mechanismButton.whenReleased(m_retractPiston);
 
-    m_extendButton.whenPressed(m_extendPiston);
-    m_retractButton.whenPressed(m_retractPiston);
+    m_extendButton.whileHeld(m_extendPiston);
+    m_retractButton.whileHeld(m_retractPiston);
 
   }
 
