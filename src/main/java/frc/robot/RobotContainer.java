@@ -15,7 +15,7 @@ import frc.robot.subsystems.Mechanism;
 public class RobotContainer {
 
   private final XboxController m_controller;
-  
+
   private final DriveTrain m_driveTrain;
   private final Mechanism m_mechanism;
 
@@ -31,6 +31,7 @@ public class RobotContainer {
 
     m_driveTrain = new DriveTrain();
     m_mechanism = new Mechanism();
+    
     m_controller = new XboxController(Constants.RobotInfo.CONTROLLER_PORT);
 
     m_driveModeButton = new JoystickButton(m_controller, Constants.RobotInfo.DRIVE_MODE_BUTTON_VALUE);
