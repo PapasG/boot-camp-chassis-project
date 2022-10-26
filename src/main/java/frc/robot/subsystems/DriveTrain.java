@@ -56,6 +56,10 @@ public class DriveTrain extends SubsystemBase{
 
     public void lebronJamesDrive(double driveSpeed, double robotRotation, double spin){
 
+        driveSpeed *= .82;
+        robotRotation *= .82;
+        spin *= .82;
+
         driveSpeed = -driveSpeed;
         robotRotation = -robotRotation;
         spin = -spin;
